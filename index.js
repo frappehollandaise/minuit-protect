@@ -5,9 +5,10 @@ const db = new QuickDB();
 module.exports = db;
 
 client.commands = new Collection();
-client.config = require('./config').clients;
-client.footer = "Karmakekette";
-client.snipeMap = new Collection();
+client.config = {
+  token: process.env.TOKEN,
+  owners: [process.env.OWNER_ID]
+};
 
 (async () => { 
   client.prefix = await db.get("prefix") || "&";
